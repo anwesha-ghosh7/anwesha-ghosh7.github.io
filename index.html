@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anwesha Ghosh</title>
     <style>
         body {
-            margin: 0 300px; /* 0 for top/bottom, 200px for left/right */
+            margin: 0 300px;
             font-family: monospace;
             font-size: 16px;
         }
@@ -27,7 +28,14 @@
             font-family: monospace;
         }
         hr {
-            margin: 0 300px; /* 0 for top/bottom, 200px for left/right */
+            margin: 0 300px;
+        }
+        
+        /* Mobile styles */
+        @media only screen and (max-width: 600px) {
+            body, hr {
+                margin: 0 20px;
+            }
         }
     </style>
 </head>
