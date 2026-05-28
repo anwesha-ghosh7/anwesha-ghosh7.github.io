@@ -2,6 +2,19 @@
 <html>
 <head>
     <title>complex analysis</title>
+    <script>
+        (function () {
+            try {
+                var storedTheme = localStorage.getItem('theme');
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    storedTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                }
+                document.documentElement.dataset.theme = storedTheme;
+            } catch (error) {
+                document.documentElement.dataset.theme = 'light';
+            }
+        }());
+    </script>
     <style>
         body {
             margin-left: 300px;
@@ -11,8 +24,11 @@
             font-family: monospace;
         }
     </style>
+    <link rel="stylesheet" href="../files/theme.css">
+    <script src="../files/theme.js" defer></script>
 </head>
 <body>
+    <button class="theme-toggle" type="button" data-theme-toggle></button>
     <p style="font-size: 13px; color: #888; font-family: monospace; margin-bottom: 10px;">
         Prof. Sourav Ghosh, Fall 2025
     </p>
@@ -21,6 +37,6 @@
     <br><br>
     <a href="../files/COMPLEX_A2.pdf" style="color: #ffc0cb; font-size: 15px;"><strong><span style="font-family: monospace;">Assignment 2</span></strong></a>
     <br><br>
-    <a href="javascript:history.back()" style="display: inline-block; padding: 10px 20px; background-color: #ffc0cb; color: whitesmoke; text-decoration: none; font-family: 'Courier New', monospace; font-size: 16px; border-radius: 4px; margin-top: 20px;">back</a>
+    <a href="javascript:history.back()" class="button-link">back</a>
 </body>
 </html>

@@ -3,6 +3,19 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>math archive</title>
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem('theme');
+        if (storedTheme !== 'light' && storedTheme !== 'dark') {
+          storedTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = storedTheme;
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    }());
+  </script>
   <style>
     body {
       margin-left: 300px;
@@ -23,8 +36,11 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="files/theme.css">
+  <script src="files/theme.js" defer></script>
 </head>
 <body>
+  <button class="theme-toggle" type="button" data-theme-toggle></button>
   <h1>math archive</h1>
   <h2>Undergraduate Archive</h2>
   <ul>
@@ -60,7 +76,7 @@
     </li>
   </ul>
 
-  <a href="index.html" style="display: inline-block; padding: 10px 20px; background-color: #ffc0cb; color: whitesmoke; text-decoration: none; font-family: 'Courier New', monospace; font-size: 16px; border-radius: 4px; margin-top: 20px;">back</a>
+  <a href="index.html" class="button-link">back</a>
 
 </body>
 </html>
