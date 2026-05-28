@@ -65,6 +65,10 @@ label {
   color: inherit;
 }
 
+h1 {
+  color: #ffc0cb !important;
+}
+
 a {
   color: var(--link) !important;
 }
