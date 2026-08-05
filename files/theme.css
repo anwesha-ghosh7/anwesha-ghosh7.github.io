@@ -82,14 +82,6 @@ hr {
   border-top: 1px solid var(--border);
 }
 
-a.button-link,
-button.theme-toggle {
-  border: 1px solid var(--border);
-  background: var(--accent);
-  color: var(--accent-text) !important;
-  box-shadow: var(--toggle-shadow);
-}
-
 a.button-link {
   display: inline-block;
   padding: 10px 20px;
@@ -98,6 +90,10 @@ a.button-link {
   font-size: 16px;
   border-radius: 4px;
   margin-top: 20px;
+  border: 1px solid var(--border);
+  background: var(--accent);
+  color: var(--accent-text) !important;
+  box-shadow: var(--toggle-shadow);
 }
 
 a.button-link:hover {
@@ -105,19 +101,53 @@ a.button-link:hover {
   color: #ffffff !important;
 }
 
+/* Theme toggle */
 button.theme-toggle {
   position: fixed;
   top: 16px;
   right: 16px;
   z-index: 999;
-  padding: 10px 14px;
+  padding: 0;
+  width: 48px;
+  height: 48px;
   border-radius: 999px;
   font: inherit;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffb3c7; /* pink background */
+  border: 2px solid #ffb3c7; /* pink border */
+  box-shadow: var(--toggle-shadow);
+  transition: transform 0.18s ease, color 0.18s ease, background 0.18s ease;
 }
 
 button.theme-toggle:hover {
   transform: translateY(-1px);
+}
+
+/* Heart SVG styling */
+button.theme-toggle .heart-icon {
+  width: 25px;
+  height: 25px;
+  display: block;
+  margin: 0;
+}
+
+/* Ensure the SVG path fill uses explicit values per theme */
+button.theme-toggle .heart-icon path {
+  fill: currentColor;
+  transition: fill 0.18s ease;
+}
+
+/* White heart in light mode */
+html[data-theme="light"] button.theme-toggle .heart-icon path {
+  fill: #ffffff !important;
+}
+
+/* Black heart in dark mode */
+html[data-theme="dark"] button.theme-toggle .heart-icon path {
+  fill: #000000 !important;
 }
 
 html[data-theme="dark"] [style*="color: #333"],
