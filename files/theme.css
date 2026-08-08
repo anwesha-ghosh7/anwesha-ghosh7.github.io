@@ -13,7 +13,7 @@
 }
 
 html[data-theme="dark"] {
-  --bg: #09090b;
+  --bg: #181517;
   --surface: rgba(20, 20, 24, 0.9);
   --text: #f5f3f4;
   --muted: #b7adb3;
@@ -147,7 +147,7 @@ html[data-theme="light"] button.theme-toggle .heart-icon path {
 
 /* Black heart in dark mode */
 html[data-theme="dark"] button.theme-toggle .heart-icon path {
-  fill: #000000 !important;
+  fill: #181517 !important;
 }
 
 html[data-theme="dark"] [style*="color: #333"],
