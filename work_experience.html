@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>work experience</title>
+  <!-- Add viewport meta for mobile responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem('theme');
+        if (storedTheme !== 'light' && storedTheme !== 'dark') {
+          storedTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = storedTheme;
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    }());
+  </script>
+  <style>
+    body {
+      margin-left: 300px;
+      margin-right: 300px;
+      font-family: "Courier New", monospace;
+      font-size: 16px;
+      text-align: justify;
+    }
+    h1 {
+      color: #ffc0cb;
+      font-family: "Courier";
+      font-size: 25px;
+    }
+    /* Media query for smaller screens */
+    @media only screen and (max-width: 600px) {
+      body {
+        margin: 20px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="files/theme.css">
+  <script src="files/theme.js" defer></script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" data-theme-toggle></button>
+  <h1>
+    <b>work experience</b>
+  </h1>
+
+  <ol>
+    <li>
+      <strong>Teaching Assistant</strong>
+      <br>
+      <em>Quantitative Reasoning and Mathematical Thinking, Monsoon 2026, Prof. Sandeep Juneja, Ashoka University</em>
+      <br>
+      <p>
+        currently working.
+      </p>
+
+    </li>
+    <li>
+      <strong>Teaching Assistant</strong>
+      <br>
+      <em>Quantitative Reasoning and Mathematical Thinking, Summer 2026, Prof. Aalok Thakkar, Ashoka University</em>
+      <br>
+      <p>
+        TA Rating: 4.77/5.0
+      </p>
+    </li>
+    <li>
+      <strong>Teaching Assistant</strong>
+      <br>
+      <em>Number Theory, Lodha Genuis Programme 2025, Prof. Shanta Laishram, Ashoka University</em>
+      <br>
+      <p>
+        TBD
+      </p>
+    </li>
+    <li>
+      <strong>Teaching Assistant</strong>
+      <br>
+      <em>Experimental Mathematics, Lodha Genius Programme 2024, Prof. Sagar Srivastava, Ashoka University</em>
+      <br>
+      <p>
+        -
+      </p>
+    </li>
+  </ol>
+
+  <a href="index.html" class="button-link">back</a>
+ 
+</body>
+</html>
