@@ -19,8 +19,9 @@
   </script>
   <style>
     body {
-      margin-left: 300px;
-      margin-right: 300px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
       font-family: "Courier New", monospace;
       font-size: 16px;
     }
@@ -44,7 +45,12 @@
       border-radius: 4px;
       margin-top: 20px;
     }
-    
+    /* Tablet styles */
+    @media only screen and (max-width: 1024px) {
+      body {
+        padding: 0 30px;
+      }
+    }
     /* Mobile view adjustments */
     @media screen and (max-width: 600px) {
       body {
