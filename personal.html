@@ -46,6 +46,45 @@
       color: #555;
       line-height: 1.6;
     }
+    .art-section {
+      margin-top: 40px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+    .art-section h2 {
+      margin: 0 0 10px;
+      color: inherit;
+      font-size: 22px;
+    }
+    .art-section-intro {
+      margin: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .art-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .art-piece {
+      margin: 0;
+      padding: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .art-piece img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: var(--accent);
+    }
+    .art-piece figcaption {
+      padding: 10px 2px 0;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
     /* Tablet styles */
     @media only screen and (max-width: 1024px) {
       body {
@@ -60,6 +99,9 @@
       h1 {
       font-size: 20px;
       }
+      .art-gallery {
+        grid-template-columns: 1fr;
+      }
     }
     </style>
     <link rel="stylesheet" href="files/theme.css">
@@ -69,6 +111,24 @@
     <button class="theme-toggle" type="button" data-theme-toggle></button>
     <h1><b>personal</b></h1>
 
+    <section class="art-section" aria-labelledby="art-heading">
+      <h2 id="art-heading">small art things</h2>
+      <p class="art-section-intro">A little gallery of things I have made.</p>
+      <div class="art-gallery">
+        <figure class="art-piece">
+          <img src="files/art/art-1.jpg" alt="Artwork 1" loading="lazy" decoding="async">
+          <figcaption>oct 7, 2026</figcaption>
+        </figure>
+        <figure class="art-piece">
+          <img src="files/art/art-2.jpg" alt="Artwork 2" loading="lazy" decoding="async">
+          <figcaption>sep 17, 2026</figcaption>
+        </figure>
+        <figure class="art-piece">
+          <img src="files/art/art-3.jpg" alt="Artwork 3" loading="lazy" decoding="async">
+          <figcaption>oct 8, 2026</figcaption>
+        </figure>
+      </div>
+    </section>
 
     <a href="index.html" class="button-link">back</a>
   
