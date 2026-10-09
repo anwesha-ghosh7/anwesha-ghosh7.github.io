@@ -84,6 +84,12 @@
       object-fit: cover;
       background: var(--accent);
     }
+    .art-piece-placeholder {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--accent);
+    }
     .art-piece figcaption {
       padding: 10px 2px 0;
       color: var(--muted);
@@ -136,6 +142,25 @@
         <figure class="art-piece">
           <img src="files/art/art-3.jpg" alt="Artwork 3" loading="lazy" decoding="async">
           <figcaption>oct 8, 2026</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="art-section" aria-labelledby="crochet-heading">
+      <h2 id="crochet-heading">crochet</h2>
+      <p class="art-section-intro">i picked up crochet in summer of 2024, here are some things i made <3</p>
+      <div class="art-gallery">
+        <figure class="art-piece">
+          <div class="art-piece-placeholder" aria-label="Crochet placeholder"></div>
+          <figcaption>coming soon</figcaption>
+        </figure>
+        <figure class="art-piece">
+          <div class="art-piece-placeholder" aria-label="Crochet placeholder"></div>
+          <figcaption>coming soon</figcaption>
+        </figure>
+        <figure class="art-piece">
+          <div class="art-piece-placeholder" aria-label="Crochet placeholder"></div>
+          <figcaption>coming soon</figcaption>
         </figure>
       </div>
     </section>
