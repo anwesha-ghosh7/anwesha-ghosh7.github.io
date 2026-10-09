@@ -51,8 +51,10 @@ textarea {
 }
 
 body.has-sidebar {
-  max-width: 900px;
-  margin: 0 40px 0 220px;
+  box-sizing: border-box;
+  width: min(900px, calc(100% - 260px));
+  max-width: none;
+  margin: 0 auto 0 max(220px, calc(220px + (100% - 220px - min(900px, calc(100% - 260px))) / 2));
 }
 
 .site-sidebar {
@@ -85,6 +87,7 @@ body.has-sidebar {
 
 @media only screen and (max-width: 1024px) {
   body.has-sidebar {
+    width: auto;
     margin-left: 210px;
     margin-right: 30px;
   }
@@ -96,6 +99,7 @@ body.has-sidebar {
 
 @media only screen and (max-width: 600px) {
   body.has-sidebar {
+    width: auto;
     margin: 0;
   }
 
