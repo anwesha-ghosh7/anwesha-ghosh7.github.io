@@ -50,6 +50,73 @@ textarea {
   color: var(--text);
 }
 
+body.has-sidebar {
+  max-width: 900px;
+  margin: 0 40px 0 220px;
+}
+
+.site-sidebar {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  width: 160px;
+  padding: 18px 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--toggle-shadow);
+  font-family: "Courier New", monospace;
+  text-align: left;
+}
+
+.site-sidebar a {
+  display: block;
+  margin: 0 0 12px;
+  text-decoration: none;
+}
+
+.site-sidebar a:last-child {
+  margin-bottom: 0;
+}
+
+.site-sidebar a[aria-current="page"] {
+  color: var(--link-hover) !important;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 1024px) {
+  body.has-sidebar {
+    margin-left: 210px;
+    margin-right: 30px;
+  }
+
+  .site-sidebar {
+    left: 16px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body.has-sidebar {
+    margin: 0;
+  }
+
+  .site-sidebar {
+    position: static;
+    width: auto;
+    margin: 0 0 24px;
+    transform: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    padding: 12px 14px;
+  }
+
+  .site-sidebar a,
+  .site-sidebar a:last-child {
+    display: inline-block;
+    margin: 0;
+  }
+}
+
 h1,
 h2,
 h3,
