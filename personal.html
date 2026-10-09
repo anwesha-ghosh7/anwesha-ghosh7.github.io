@@ -62,15 +62,20 @@
       line-height: 1.6;
     }
     .art-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
       gap: 20px;
+      overflow-x: auto;
+      padding: 0 0 12px;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
     }
     .art-piece {
+      flex: 0 0 28%;
       margin: 0;
       padding: 10px;
       border: 1px solid var(--border);
       background: var(--surface);
+      scroll-snap-align: start;
     }
     .art-piece img {
       display: block;
@@ -98,9 +103,6 @@
       }
       h1 {
       font-size: 20px;
-      }
-      .art-gallery {
-        grid-template-columns: 1fr;
       }
     }
     </style>
