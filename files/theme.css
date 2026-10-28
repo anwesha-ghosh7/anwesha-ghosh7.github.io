@@ -1,29 +1,60 @@
 :root {
-  --bg: #fff7fb;
-  --surface: rgba(255, 255, 255, 0.9);
-  --text: #1f1a1d;
-  --muted: #665861;
-  --link: #c91f58;
-  --link-hover: #8f143e;
-  --accent: #ffb3c7;
-  --accent-text: #1f1a1d;
-  --border: rgba(201, 31, 88, 0.24);
-  --toggle-bg: rgba(255, 255, 255, 0.9);
-  --toggle-shadow: 0 10px 30px rgba(31, 26, 29, 0.12);
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: #263440;
+  --muted: #5e6d79;
+  --link: #b34368;
+  --link-hover: #873952;
+  --accent: #e8adbd;
+  --accent-text: #263440;
+  --border: #b9c7d2;
+  --toggle-bg: #f8fafc;
+  --toggle-shadow: none;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url("fonts/Spectral-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url("fonts/Spectral-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url("fonts/Spectral-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url("fonts/Spectral-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
 }
 
 html[data-theme="dark"] {
-  --bg: #181517;
-  --surface: rgba(20, 20, 24, 0.9);
-  --text: #f5f3f4;
-  --muted: #b7adb3;
-  --link: #ff92b6;
-  --link-hover: #ffd0df;
-  --accent: #ff8fb1;
-  --accent-text: #120d10;
-  --border: rgba(255, 146, 182, 0.34);
-  --toggle-bg: rgba(24, 24, 28, 0.9);
-  --toggle-shadow: 0 10px 30px rgba(0, 0, 0, 0.38);
+  --bg: #1e2935;
+  --surface: #293744;
+  --text: #edf2f6;
+  --muted: #b5c1ca;
+  --link: #e8a0b6;
+  --link-hover: #ffd7e2;
+  --accent: #f0bdcc;
+  --accent-text: #1e2935;
+  --border: #765362;
+  --toggle-bg: #293744;
   color-scheme: dark;
 }
 
@@ -39,7 +70,14 @@ html {
 body {
   background: transparent;
   color: inherit;
+  font-family: "Spectral", Georgia, serif;
+  font-size: 18px;
   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body,
+body * {
+  font-family: "Spectral", Georgia, serif !important;
 }
 
 body,
@@ -62,11 +100,8 @@ body.has-sidebar {
   top: 24px;
   left: 24px;
   width: 160px;
-  padding: 18px 16px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  box-shadow: var(--toggle-shadow);
-  font-family: "Courier New", monospace;
+  padding: 0;
+  font-family: inherit;
   text-align: left;
 }
 
@@ -78,6 +113,10 @@ body.has-sidebar {
 
 .site-sidebar a:last-child {
   margin-bottom: 0;
+}
+
+.site-sidebar a.subpage-link {
+  padding-left: 14px;
 }
 
 .site-sidebar a[aria-current="page"] {
@@ -111,7 +150,7 @@ body.has-sidebar {
     display: flex;
     flex-wrap: wrap;
     gap: 8px 16px;
-    padding: 12px 14px;
+    padding: 0;
   }
 
   .site-sidebar a,
@@ -137,7 +176,7 @@ label {
 }
 
 h1 {
-  color: #ffc0cb !important;
+  color: var(--accent) !important;
 }
 
 a {
@@ -155,21 +194,31 @@ hr {
 
 a.button-link {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 0;
   text-decoration: none;
-  font-family: 'Courier New', monospace;
+  font-family: inherit;
   font-size: 16px;
-  border-radius: 4px;
   margin-top: 20px;
-  border: 1px solid var(--border);
-  background: var(--accent);
-  color: var(--accent-text) !important;
-  box-shadow: var(--toggle-shadow);
+  color: var(--link) !important;
+  font-weight: bold;
 }
 
 a.button-link:hover {
-  background: var(--link);
-  color: #ffffff !important;
+  color: var(--link-hover) !important;
+}
+
+a.blog-button {
+  display: inline-flex;
+  align-items: center;
+  margin: 4px 0 8px;
+  padding: 0;
+  color: var(--link) !important;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+a.blog-button:hover {
+  color: var(--link-hover) !important;
 }
 
 /* Theme toggle */
@@ -187,8 +236,8 @@ button.theme-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffb3c7; /* pink background */
-  border: 2px solid #ffb3c7; /* pink border */
+  background: var(--accent);
+  border: 2px solid var(--accent);
   box-shadow: var(--toggle-shadow);
   transition: transform 0.18s ease, color 0.18s ease, background 0.18s ease;
 }
@@ -218,7 +267,7 @@ html[data-theme="light"] button.theme-toggle .heart-icon path {
 
 /* Black heart in dark mode */
 html[data-theme="dark"] button.theme-toggle .heart-icon path {
-  fill: #181517 !important;
+  fill: var(--accent-text) !important;
 }
 
 html[data-theme="dark"] [style*="color: #333"],

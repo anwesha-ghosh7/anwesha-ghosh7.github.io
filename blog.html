@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Notes, thoughts and small joys from Anwesha.">
+  <title>blog · anwesha ghosh</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>
+    (function () {
+      try {
+        var storedTheme = localStorage.getItem('theme');
+        if (storedTheme !== 'light' && storedTheme !== 'dark') {
+          storedTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = storedTheme;
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    }());
+  </script>
+  <link rel="stylesheet" href="files/theme.css">
+  <script src="files/theme.js" defer></script>
+  <style>
+    @font-face {
+      font-family: "Spectral";
+      src: url("files/fonts/Spectral-Regular.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Spectral";
+      src: url("files/fonts/Spectral-Medium.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Spectral";
+      src: url("files/fonts/Spectral-SemiBold.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Spectral";
+      src: url("files/fonts/Spectral-Bold.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    body.blog-layout {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 40px;
+      font-family: "Spectral", Georgia, serif !important;
+      letter-spacing: 0.015em;
+    }
+
+    .blog-layout * {
+      font-family: "Spectral", Georgia, serif !important;
+    }
+
+    .contact-sidebar {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      width: 180px;
+    }
+
+    .contact-sidebar h2,
+    .metadata-sidebar h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .contact-sidebar p,
+    .metadata-sidebar p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .contact-sidebar a {
+      overflow-wrap: anywhere;
+    }
+
+    .blog-header {
+      margin: 20px 0 34px;
+    }
+
+    .blog-header h1 {
+      margin: 0 0 8px;
+    }
+
+    .blog-header p {
+      max-width: 650px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .metadata-sidebar {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      width: 180px;
+    }
+
+    .metadata-group {
+      margin: 0 0 28px;
+    }
+
+    .tag-list,
+    .year-list {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag-button {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--link);
+      font: inherit;
+      font-size: 14px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .tag-button:hover,
+    .tag-button[aria-pressed="true"] {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    .tag-count,
+    .year-count {
+      color: var(--muted);
+    }
+
+    .timeline {
+      position: relative;
+      margin: 0 0 35px 9px;
+      padding-left: 32px;
+      border-left: 2px solid var(--border);
+    }
+
+    .post {
+      position: relative;
+      margin: 0 0 30px;
+      padding: 20px 22px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+
+    .post::before {
+      position: absolute;
+      top: 24px;
+      left: -42px;
+      width: 14px;
+      height: 14px;
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 2px var(--border);
+      content: "";
+    }
+
+    .post[hidden] {
+      display: none;
+    }
+
+    .post-date {
+      margin: 0 0 8px;
+      color: var(--link);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .post h2 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .post p {
+      margin: 0 0 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .post-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .post-tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--accent) 35%, transparent);
+      color: var(--link);
+      font-size: 12px;
+    }
+
+    .empty-message {
+      display: none;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .empty-message.visible {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      body.blog-layout {
+        padding: 0 20px;
+      }
+
+      .contact-sidebar,
+      .metadata-sidebar {
+        position: static;
+        width: auto;
+        margin: 24px 0;
+      }
+
+      .blog-header {
+        margin-top: 20px;
+      }
+
+      .timeline {
+        margin-left: 4px;
+        padding-left: 24px;
+      }
+
+      .post {
+        padding: 17px;
+      }
+
+      .post::before {
+        left: -34px;
+      }
+    }
+  </style>
+</head>
+<body class="blog-layout">
+  <button class="theme-toggle" type="button" data-theme-toggle></button>
+  <aside class="metadata-sidebar" aria-label="Blog filters and tag counts">
+    <section class="metadata-group">
+      <h2>tags</h2>
+      <ul class="tag-list">
+        <li><button class="tag-button" type="button" data-tag="all" aria-pressed="true">all <span class="tag-count">1</span></button></li>
+        <li><button class="tag-button" type="button" data-tag="essay" aria-pressed="false">essay <span class="tag-count">1</span></button></li>
+        <li><button class="tag-button" type="button" data-tag="disobedience" aria-pressed="false">disobedience <span class="tag-count">1</span></button></li>
+        <li><button class="tag-button" type="button" data-tag="math" aria-pressed="false">math <span class="tag-count">1</span></button></li>
+      </ul>
+    </section>
+  </aside>
+
+  <aside class="contact-sidebar" aria-label="Blog update years">
+    <section class="metadata-group">
+      <h2>updated</h2>
+      <ul class="year-list">
+        <li class="year-item">2026 <span class="year-count">1</span></li>
+      </ul>
+    </section>
+  </aside>
+
+  <header class="blog-header">
+    <h1><b>keep the fire burning</b></h1>
+    <p>Sometimes, I write. Browse by tag or wander through the timeline.</p>
+  </header>
+
+  <main>
+    <section class="timeline" aria-label="Blog timeline">
+      <article class="post" data-tags="essay disobedience math" data-year="2026">
+        <p class="post-date"><time datetime="2026-10-28">28 october 2026</time></p>
+        <h2><a href="essay.html">The Feminine Pursuit: Mathematics and Literature</a></h2>
+        <p>An essay on wonder, mathematics, literature, and the courage to question the systems that shape who gets to belong.</p>
+        <div class="post-tags">
+          <span class="post-tag">essay</span>
+          <span class="post-tag">disobedience</span>
+          <span class="post-tag">math</span>
+        </div>
+      </article>
+    </section>
+
+    <p class="empty-message" data-empty-message>No posts with this tag yet — check back soon.</p>
+  </main>
+
+  <script>
+    const tagButtons = document.querySelectorAll('[data-tag]');
+    const posts = document.querySelectorAll('.post');
+    const emptyMessage = document.querySelector('[data-empty-message]');
+    const yearList = document.querySelector('.year-list');
+
+    tagButtons.forEach((button) => {
+      const tag = button.dataset.tag;
+      const count = tag === 'all'
+        ? posts.length
+        : [...posts].filter((post) => post.dataset.tags.split(' ').includes(tag)).length;
+      button.querySelector('.tag-count').textContent = count;
+    });
+
+    const years = [...posts].reduce((counts, post) => {
+      const year = post.dataset.year;
+      counts[year] = (counts[year] || 0) + 1;
+      return counts;
+    }, {});
+
+    yearList.replaceChildren(...Object.entries(years).sort(([a], [b]) => b.localeCompare(a)).map(([year, count]) => {
+      const item = document.createElement('li');
+      item.className = 'year-item';
+      item.innerHTML = `${year} <span class="year-count">${count}</span>`;
+      return item;
+    }));
+
+    tagButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const selectedTag = button.dataset.tag;
+        let visiblePosts = 0;
+
+        tagButtons.forEach((tagButton) => {
+          tagButton.setAttribute('aria-pressed', String(tagButton === button));
+        });
+
+        posts.forEach((post) => {
+          const matches = selectedTag === 'all' || post.dataset.tags.split(' ').includes(selectedTag);
+          post.hidden = !matches;
+          if (matches) {
+            visiblePosts += 1;
+          }
+        });
+
+        emptyMessage.classList.toggle('visible', visiblePosts === 0);
+      });
+    });
+  </script>
+</body>
+</html>
