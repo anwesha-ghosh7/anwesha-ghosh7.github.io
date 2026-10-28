@@ -44,19 +44,78 @@
             font-family: Menlo, Monaco, Consolas, monospace;
         }
         a:hover {
-            color: #de3073; 
+            color: var(--link);
+        }
+        .home-layout {
+            position: relative;
+        }
+        .home-content {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .profile-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: absolute;
+            top: 24px;
+            left: -220px;
+            width: 180px;
+        }
+        .picture-placeholder {
+            width: 180px;
+            height: 180px;
+            border: 2px solid var(--accent);
+            background: var(--surface);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .contact-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .contact-link + .contact-link::before {
+            content: "·";
+            margin-right: 8px;
+            color: var(--muted);
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--link) !important;
+            font-family: monospace !important;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .contact-link:hover {
+            color: var(--link-hover) !important;
         }
         .pages a {
             display: block;
             margin-bottom: 5px;
-            font-family: Menlo, Monaco, Consolas, monospace;
+            font-family: monospace !important;
+            font-size: 20px;
+            font-weight: bold;
             text-decoration: none;
+        }
+        @media only screen and (max-width: 600px) {
+            .home-layout {
+                display: block;
+            }
+            .profile-column {
+                position: static;
+                margin-bottom: 32px;
+            }
         }
         hr {
             margin: 0 -40px;
             width: calc(100% + 80px);
         }
-        
+
         /* Tablet styles */
         @media only screen and (max-width: 1024px) {
             body {
@@ -85,33 +144,44 @@
 <body>
     <button class="theme-toggle" type="button" data-theme-toggle></button>
 
-    <h1>
-        anwesha ghosh
-    </h1>
+    <div class="home-layout">
+        <aside class="profile-column" aria-label="Profile">
+            <img class="picture-placeholder" src="files/profile.jpg" alt="Profile photo">
+            <div class="contact-links">
+                <a class="contact-link" target="_blank" href="https://github.com/anwesha-ghosh7/CV/blob/master/cv_anwesha.pdf">
+                    resume
+                </a>
+                <a class="contact-link" target="_blank" href="mailto:anweshaghost@gmail.com">
+                    email
+                </a>
+            </div>
+        </aside>
 
-    <p>
-        Hello, I'm Anwesha. I am a student at Ashoka University, pursuing a B.Sc. in Mathematics (4th year). I like math, reading, running and crochet. This website is a collection of my projects, notes and personal writings. I update it whenever I have something new to share. You can find my resume and contact information below. Feel free to reach out if you want to collaborate on a project or just want to chat about math, books or anything else!
-    </p>
+        <main class="home-content">
+            <h1>
+                anwesha ghosh
+            </h1>
 
-    <p>
-        <a target="_blank" href="https://github.com/anwesha-ghosh7/CV/blob/master/cv_anwesha.pdf">resume</a>
-        <a target="_blank" href="mailto:anweshaghost@gmail.com">email</a>
-    </p>
-    <hr style="width: 100%; margin: 0 auto;">
-    <p class="pages">
-        <a href="projects.html" style="display: block; margin-bottom: 15px;">projects</a>
-        <a href="work_experience.html" style="display: block; margin-bottom: 15px;">work experience</a>
-        <a href="matharc.html" style="display: block; margin-bottom: 15px;">math archive</a>
-        <a href="personal.html" style="display: block; margin-bottom: 15px;">personal</a>
-        <a href="misc.html" style="display: block;">miscellaneous</a>
-    </p>
-    <div style="background-color: transparent; padding: 20px; border: 2px solid var(--accent); border-radius: 8px; margin-top: 20px;">
-        <p style="margin: 0 0 10px 0;">Find me on social media:</p>
-        <a href="https://app.thestorygraph.com/profile/hourlypluto" target="_blank" style="color: #de3073; text-decoration: none; margin-right: 15px;">Storygraph</a>
-        <a href="https://letterboxd.com/hourlypluto/" target="_blank" style="color: #de3073; text-decoration: none; margin-right: 15px;">Letterboxd</a>
-        <a href="https://github.com/anwesha-ghosh7" target="_blank" style="color: #de3073; text-decoration: none; margin-right: 15px;">Github</a>
-    
+            <p>
+                Hello, I'm Anwesha. I am a student at Ashoka University, pursuing a B.Sc. in Mathematics (4th year). I like math, reading, running and crochet. This website is a collection of my projects, notes and personal writings. I update it whenever I have something new to share. You can find my resume and contact information below. Feel free to reach out if you want to collaborate on a project or just want to chat about math, books or anything else!
+            </p>
+
+            <hr style="width: 100%; margin: 0 auto;">
+            <p class="pages">
+                <a href="projects.html" style="display: block; margin-bottom: 15px;">projects</a>
+                <a href="work_experience.html" style="display: block; margin-bottom: 15px;">work experience</a>
+                <a href="matharc.html" style="display: block; margin-bottom: 15px;">math archive</a>
+                <a href="personal.html" style="display: block; margin-bottom: 15px;">personal</a>
+
+                <a href="misc.html" style="display: block;">miscellaneous</a>
+            </p>
+            <div style="background-color: transparent; padding: 20px; border: 2px solid var(--accent); border-radius: 8px; margin-top: 20px;">
+                <p style="margin: 0 0 10px 0;">Find me on social media:</p>
+                <a href="https://app.thestorygraph.com/profile/hourlypluto" target="_blank" style="color: var(--link); text-decoration: none; margin-right: 15px;">Storygraph</a>
+                <a href="https://letterboxd.com/hourlypluto/" target="_blank" style="color: var(--link); text-decoration: none; margin-right: 15px;">Letterboxd</a>
+                <a href="https://github.com/anwesha-ghosh7" target="_blank" style="color: var(--link); text-decoration: none; margin-right: 15px;">Github</a>
+            </div>
+        </main>
     </div>
- 
 </body>
 </html>

@@ -106,11 +106,33 @@
       line-height: 1.7;
     }
 
+    .back-to-website {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--link) !important;
+    }
+
     .metadata-sidebar {
       position: fixed;
-      top: 24px;
-      left: 24px;
+      top: 40px;
+      left: 48px;
       width: 180px;
+    }
+
+    .site-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      color: var(--link) !important;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .site-brand img {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 20px;
     }
 
     .metadata-group {
@@ -126,7 +148,8 @@
       list-style: none;
     }
 
-    .tag-button {
+    .tag-button,
+    .year-button {
       display: flex;
       justify-content: space-between;
       width: 100%;
@@ -141,7 +164,9 @@
     }
 
     .tag-button:hover,
-    .tag-button[aria-pressed="true"] {
+    .tag-button[aria-pressed="true"],
+    .year-button:hover,
+    .year-button[aria-pressed="true"] {
       color: var(--link-hover);
       text-decoration: underline;
     }
@@ -261,6 +286,10 @@
 <body class="blog-layout">
   <button class="theme-toggle" type="button" data-theme-toggle></button>
   <aside class="metadata-sidebar" aria-label="Blog filters and tag counts">
+    <a class="site-brand" href="index.html">
+      <img src="favicon.svg" alt="">
+      <span>anwesha ghosh</span>
+    </a>
     <section class="metadata-group">
       <h2>tags</h2>
       <ul class="tag-list">
@@ -270,13 +299,14 @@
         <li><button class="tag-button" type="button" data-tag="math" aria-pressed="false">math <span class="tag-count">1</span></button></li>
       </ul>
     </section>
-  </aside>
-
-  <aside class="contact-sidebar" aria-label="Blog update years">
     <section class="metadata-group">
       <h2>updated</h2>
       <ul class="year-list">
-        <li class="year-item">2026 <span class="year-count">1</span></li>
+        <li class="year-item">
+          <button class="year-button" type="button" data-year="all" aria-pressed="true">
+            all <span class="year-count">1</span>
+          </button>
+        </li>
       </ul>
     </section>
   </aside>
@@ -284,6 +314,7 @@
   <header class="blog-header">
     <h1><b>keep the fire burning</b></h1>
     <p>Sometimes, I write. Browse by tag or wander through the timeline.</p>
+    <a class="back-to-website" href="index.html">back to website</a>
   </header>
 
   <main>
@@ -308,6 +339,8 @@
     const posts = document.querySelectorAll('.post');
     const emptyMessage = document.querySelector('[data-empty-message]');
     const yearList = document.querySelector('.year-list');
+    let selectedTag = 'all';
+    let selectedYear = 'all';
 
     tagButtons.forEach((button) => {
       const tag = button.dataset.tag;
@@ -323,31 +356,54 @@
       return counts;
     }, {});
 
-    yearList.replaceChildren(...Object.entries(years).sort(([a], [b]) => b.localeCompare(a)).map(([year, count]) => {
+    const allYearsItem = document.createElement('li');
+    allYearsItem.className = 'year-item';
+    allYearsItem.innerHTML = `<button class="year-button" type="button" data-year="all" aria-pressed="true">all <span class="year-count">${posts.length}</span></button>`;
+
+    yearList.replaceChildren(allYearsItem, ...Object.entries(years).sort(([a], [b]) => b.localeCompare(a)).map(([year, count]) => {
       const item = document.createElement('li');
       item.className = 'year-item';
-      item.innerHTML = `${year} <span class="year-count">${count}</span>`;
+      item.innerHTML = `<button class="year-button" type="button" data-year="${year}" aria-pressed="false">${year} <span class="year-count">${count}</span></button>`;
       return item;
     }));
 
+    const yearButtons = yearList.querySelectorAll('[data-year]');
+
+    const updateVisiblePosts = () => {
+      let visiblePosts = 0;
+
+      posts.forEach((post) => {
+        const matchesTag = selectedTag === 'all' || post.dataset.tags.split(' ').includes(selectedTag);
+        const matchesYear = selectedYear === 'all' || post.dataset.year === selectedYear;
+        const matches = matchesTag && matchesYear;
+        post.hidden = !matches;
+        if (matches) {
+          visiblePosts += 1;
+        }
+      });
+
+      emptyMessage.classList.toggle('visible', visiblePosts === 0);
+    };
+
     tagButtons.forEach((button) => {
       button.addEventListener('click', () => {
-        const selectedTag = button.dataset.tag;
-        let visiblePosts = 0;
+        selectedTag = button.dataset.tag;
 
         tagButtons.forEach((tagButton) => {
           tagButton.setAttribute('aria-pressed', String(tagButton === button));
         });
+        updateVisiblePosts();
+      });
+    });
 
-        posts.forEach((post) => {
-          const matches = selectedTag === 'all' || post.dataset.tags.split(' ').includes(selectedTag);
-          post.hidden = !matches;
-          if (matches) {
-            visiblePosts += 1;
-          }
+    yearButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        selectedYear = button.dataset.year;
+
+        yearButtons.forEach((yearButton) => {
+          yearButton.setAttribute('aria-pressed', String(yearButton === button));
         });
-
-        emptyMessage.classList.toggle('visible', visiblePosts === 0);
+        updateVisiblePosts();
       });
     });
   </script>

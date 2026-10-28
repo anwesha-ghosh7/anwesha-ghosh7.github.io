@@ -2,8 +2,8 @@
   --bg: #ffffff;
   --surface: #ffffff;
   --text: #263440;
-  --muted: #5e6d79;
-  --link: #b34368;
+  --muted: #33415c;
+  --link: #a4133c;
   --link-hover: #873952;
   --accent: #e8adbd;
   --accent-text: #263440;
@@ -75,6 +75,10 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
+body:not(.blog-layout) {
+  font-size: 20px !important;
+}
+
 body,
 body * {
   font-family: "Spectral", Georgia, serif !important;
@@ -97,8 +101,8 @@ body.has-sidebar {
 
 .site-sidebar {
   position: fixed;
-  top: 24px;
-  left: 24px;
+  top: 40px;
+  left: 48px;
   width: 160px;
   padding: 0;
   font-family: inherit;
@@ -132,7 +136,7 @@ body.has-sidebar {
   }
 
   .site-sidebar {
-    left: 16px;
+    left: 48px;
   }
 }
 
@@ -173,6 +177,11 @@ dd,
 blockquote,
 label {
   color: inherit;
+}
+
+body:not(.essay-layout) :is(h1, h2, h3, h4, h5, h6),
+body:not(.essay-layout) :is(h1, h2, h3, h4, h5, h6) * {
+  font-family: monospace !important;
 }
 
 h1 {
