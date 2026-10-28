@@ -177,32 +177,15 @@
     }
 
     .timeline {
-      position: relative;
-      margin: 0 0 35px 9px;
-      padding-left: 32px;
-      border-left: 2px solid var(--border);
+      margin-bottom: 35px;
     }
 
     .post {
-      position: relative;
       margin: 0 0 30px;
       padding: 20px 22px;
       border: 1px solid var(--border);
       border-radius: 14px;
       background: var(--surface);
-    }
-
-    .post::before {
-      position: absolute;
-      top: 24px;
-      left: -42px;
-      width: 14px;
-      height: 14px;
-      border: 3px solid var(--bg);
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 2px var(--border);
-      content: "";
     }
 
     .post[hidden] {
@@ -268,17 +251,8 @@
         margin-top: 20px;
       }
 
-      .timeline {
-        margin-left: 4px;
-        padding-left: 24px;
-      }
-
       .post {
         padding: 17px;
-      }
-
-      .post::before {
-        left: -34px;
       }
     }
   </style>
@@ -313,16 +287,16 @@
 
   <header class="blog-header">
     <h1><b>keep the fire burning</b></h1>
-    <p>Sometimes, I write. Browse by tag or wander through the timeline.</p>
+    <p>Sometimes, I write.</p>
     <a class="back-to-website" href="index.html">back to website</a>
   </header>
 
   <main>
     <section class="timeline" aria-label="Blog timeline">
       <article class="post" data-tags="essay disobedience math" data-year="2026">
-        <p class="post-date"><time datetime="2026-10-28">28 october 2026</time></p>
-        <h2><a href="essay.html">The Feminine Pursuit: Mathematics and Literature</a></h2>
-        <p>An essay I wrote for a creative writing class.</p>
+        <p class="post-date"><time datetime="2026-10-17">17 october 2026</time></p>
+        <h2><a href="blogs/disobedience1.html">The Feminine Pursuit: Mathematics and Literature</a></h2>
+        <p>An essay on wonder, mathematics, literature and the human-ness of it all. Some thoughts on my experiences as a woman in math. This is an essay I wrote for a creative writing class called "Craft of Prose: Disobedient Women of the Essay", taught by <a href="https://sumanaroy.co.in/" target="_blank" rel="noopener noreferrer">Sumana Roy</a>.</p>
         <div class="post-tags">
           <span class="post-tag">essay</span>
           <span class="post-tag">disobedience</span>
