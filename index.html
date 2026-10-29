@@ -30,18 +30,18 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 0 40px;
-            font-family: Menlo, Monaco, Consolas, monospace;
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
             font-size: 16px;
         }
         h1 {
             color: var(--accent);
-            font-family: Menlo, Monaco, Consolas, monospace;
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
             font-size: 25px;
         }
         a {
             color: var(--accent);
             text-decoration: none;
-            font-family: Menlo, Monaco, Consolas, monospace;
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
         }
         a:hover {
             color: var(--link);
@@ -86,7 +86,7 @@
             align-items: center;
             gap: 4px;
             color: var(--link) !important;
-            font-family: monospace !important;
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace !important;
             font-size: 18px;
             font-weight: bold;
             text-decoration: none;
@@ -97,10 +97,13 @@
         .pages a {
             display: block;
             margin-bottom: 5px;
-            font-family: monospace !important;
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace !important;
             font-size: 20px;
             font-weight: bold;
             text-decoration: none;
+        }
+        .social-media-intro {
+            font-family: ui-monospace, 'SFMono-Regular', Menlo, Monaco, Consolas, monospace !important;
         }
         @media only screen and (max-width: 600px) {
             .home-layout {
@@ -163,7 +166,7 @@
             </h1>
 
             <p>
-                Hello, I'm Anwesha. I am a student at Ashoka University, pursuing a B.Sc. in Mathematics (4th year). I like math, reading, running and crochet. This website is a collection of my projects, notes and personal writings. I update it whenever I have something new to share. You can find my resume and contact information below. Feel free to reach out if you want to collaborate on a project or just want to chat about math, books or anything else!
+                Hello, I'm Anwesha! I'm currently a fourth-year undergraduate student at Ashoka University, pursuing a degree in Mathematics. I love math, writing, reading, crochet and occasionally, going for runs! This is a space for my projects, research, creative adventures and personal musings. Feel free to explore and reach out if you'd like to connect!
             </p>
 
             <hr style="width: 100%; margin: 0 auto;">
@@ -176,7 +179,7 @@
                 <a href="misc.html" style="display: block;">miscellaneous</a>
             </p>
             <div style="background-color: transparent; padding: 20px; border: 2px solid var(--accent); border-radius: 8px; margin-top: 20px;">
-                <p style="margin: 0 0 10px 0;">Find me on social media:</p>
+                <p class="social-media-intro" style="margin: 0 0 10px 0;">Find me elsewhere!</p>
                 <a href="https://app.thestorygraph.com/profile/hourlypluto" target="_blank" style="color: var(--link); text-decoration: none; margin-right: 15px;">Storygraph</a>
                 <a href="https://letterboxd.com/hourlypluto/" target="_blank" style="color: var(--link); text-decoration: none; margin-right: 15px;">Letterboxd</a>
                 <a href="https://github.com/anwesha-ghosh7" target="_blank" style="color: var(--link); text-decoration: none; margin-right: 15px;">Github</a>
